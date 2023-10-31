@@ -1,3 +1,4 @@
+//& don't change this
 import React, { useState } from "react";
 import Cookie from "js-cookie";
 import { client } from "@/pages/_app.js";
@@ -86,6 +87,7 @@ export default function CheckoutForm() {
             $city: String
             $state: String
             $token: String
+            $userId: ID  
           ) {
             createOrder(
               data: {
@@ -95,6 +97,7 @@ export default function CheckoutForm() {
                 city: $city
                 state: $state
                 token: $token
+                user: $userId 
               }
             ) {
               data {
@@ -113,6 +116,7 @@ export default function CheckoutForm() {
           city: data.city,
           state: data.state,
           token: token.token.id,
+          userId: user.id, 
         },
         context: {
           headers: {
